@@ -62,7 +62,25 @@ getJwtToken:function(){
     )
 
 
+},
+generateForgotPasswordToken:function(){
+    const forgotToken=crypto.randomBytes().toString('hex');
+    //Save to DB
+    this.forgotPasswordToken=crypto.createHash("sha256")
+    .update(forgotToken)
+    .digest("hex")
+
+
+    this.forgotPasswordExpiry=Date.now()+20+60*1000
+
+
+
+
+    //return values to the user
+return forgotToken
+
 }
+
 }
 
 export default mongoose.model("User", userSchema)
