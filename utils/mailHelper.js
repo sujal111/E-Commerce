@@ -14,4 +14,5 @@ const mailHelper=async(options)=>{
     await transporter.sendMail
 }
 
+
 export default mailHelper(message)
